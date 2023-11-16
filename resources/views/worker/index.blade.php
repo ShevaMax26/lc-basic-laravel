@@ -1,5 +1,32 @@
 @extends('layout.main')
 @section('content')
+    <form action="{{ route('worker.index') }}" class="d-flex gap-2 w-100">
+        <div class="mb-3">
+            <input type="text" class="form-control" name="name" placeholder="name" value="{{ request()->get('name') }}">
+        </div>
+        <div class="mb-3">
+            <input type="text" class="form-control" name="surname" placeholder="surname" value="{{ request()->get('surname') }}">
+        </div>
+        <div class="mb-3">
+            <input type="text" class="form-control" name="email" placeholder="email" value="{{ request()->get('email') }}">
+        </div>
+        <div class="mb-3">
+            <input type="number" class="form-control" name="from" placeholder="from" value="{{ request()->get('from') }}">
+        </div>
+        <div class="mb-3">
+            <input type="number" class="form-control" name="to" placeholder="to" value="{{ request()->get('to') }}">
+        </div>
+        <div class="mb-3">
+            <input type="text" class="form-control" name="description" placeholder="description" value="{{ request()->get('description') }}">
+        </div>
+        <div class="mb-3">
+            <label class="form-check-label" for="is_married">Is married</label>
+            <input {{ request()->get('is_married') ? 'checked' : '' }} type="checkbox" class="form-check-input" id="is_married" name="is_married">
+        </div>
+        <button type="submit" class="btn btn-primary h-fit-content" style="height: fit-content">Find</button>
+        <a href="{{ route('worker.index') }}" type="submit" class="btn btn-warning" style="height: fit-content">Clear</a>
+    </form>
+
     <table class="table">
         <thead>
         <tr>
@@ -36,4 +63,5 @@
         @endforeach
         </tbody>
     </table>
+    <div>{{ $workers->withQueryString()->links() }}</div>
 @endsection
