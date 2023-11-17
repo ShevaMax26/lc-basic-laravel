@@ -19,6 +19,11 @@ return new class extends Migration
             $table->integer('age')->nullable();
             $table->text('description')->nullable();
             $table->boolean('is_married')->default(false);
+            $table->foreignIdFor(\App\Models\Position::class)
+                ->index()
+                ->constrained()
+                ->cascadeOnDelete()
+                ->cascadeOnUpdate();
             $table->timestamps();
         });
     }
