@@ -12,11 +12,17 @@ class Position extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title'
+        'title',
+        'department_id',
     ];
 
     public function workers(): HasMany
     {
         return $this->hasMany(Worker::class);
+    }
+
+    public function department(): BelongsTo
+    {
+        return $this->belongsTo(Department::class);
     }
 }

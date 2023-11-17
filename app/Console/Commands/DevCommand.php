@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Models\Department;
 use App\Models\Position;
 use App\Models\Profile;
 use App\Models\Worker;
@@ -31,10 +32,9 @@ class DevCommand extends Command
 //        $this->prepareData();
 
         $worker = Worker::find(1);
+        $department = $worker->position->department;
 
-        $position = $worker->position;
-
-        dd($position->toArray());
+        dd($department);
         return 0;
     }
 
