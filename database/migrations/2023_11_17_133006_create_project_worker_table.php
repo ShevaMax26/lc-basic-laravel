@@ -15,16 +15,16 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(\App\Models\Project::class)
                 ->index()
-                ->unique()
                 ->constrained()
                 ->cascadeOnDelete()
                 ->cascadeOnUpdate();
             $table->foreignIdFor(\App\Models\Worker::class)
                 ->index()
-                ->unique()
                 ->constrained()
                 ->cascadeOnDelete()
                 ->cascadeOnUpdate();
+
+            $table->unique(['project_id', 'worker_id']);
 
             $table->timestamps();
         });
