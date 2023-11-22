@@ -73,6 +73,11 @@ class WorkerSeeder extends Seeder
             $worker->avatar()->create([
                 'path' => "avatar-worker-$worker->id"
             ]);
+
+            $worker->reviews()->createMany([
+                ['body' => "review1-worker-$worker->id"],
+                ['body' => "review2-worker-$worker->id"],
+            ]);
         }
     }
 }

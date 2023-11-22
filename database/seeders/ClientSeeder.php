@@ -25,6 +25,11 @@ class ClientSeeder extends Seeder
             $client->avatar()->create([
                 'path' => "avatar-client-$client->id"
             ]);
+
+            $client->reviews()->createMany([
+                ['body' => "review1-client-$client->id"],
+                ['body' => "review2-client-$client->id"],
+            ]);
         }
     }
 }
