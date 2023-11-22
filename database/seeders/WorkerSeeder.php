@@ -67,8 +67,12 @@ class WorkerSeeder extends Seeder
             ],
         ];
 
-        foreach ($workers as $worker) {
-            Worker::firstOrCreate($worker);
+        foreach ($workers as $workerData) {
+            $worker = Worker::firstOrCreate($workerData);
+
+            $worker->avatar()->create([
+                'path' => "avatar-worker-$worker->id"
+            ]);
         }
     }
 }
