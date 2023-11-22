@@ -31,10 +31,9 @@ class DevCommand extends Command
     {
 //        $this->prepareData();
 
-        $worker = Worker::find(1);
-        $department = $worker->position->department;
+        $position = Position::find(1);
 
-        dd($department);
+        dd($position->oldestWorker->toArray());
         return 0;
     }
 
