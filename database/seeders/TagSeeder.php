@@ -7,7 +7,7 @@ use App\Models\Tag;
 use App\Models\Worker;
 use Illuminate\Database\Seeder;
 
-class TagsSeeder extends Seeder
+class TagSeeder extends Seeder
 {
     /**
      * Run the database seeds.
