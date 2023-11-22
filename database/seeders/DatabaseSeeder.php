@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             ProfileSeeder::class,
             ProjectSeeder::class,
             ClientSeeder::class,
+            TagsSeeder::class,
         ]);
     }
 }
