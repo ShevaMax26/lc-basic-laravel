@@ -29,6 +29,11 @@ class DevCommand extends Command
      */
     public function handle()
     {
+        $worker = Worker::first();
+
+        $worker->update([
+            'age' => '16.000'
+        ]);
         return 0;
     }
 }
