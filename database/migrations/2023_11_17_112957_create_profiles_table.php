@@ -25,6 +25,7 @@ return new class extends Migration
             $table->date('finished_study_at')->nullable();
 
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

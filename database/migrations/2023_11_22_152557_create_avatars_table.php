@@ -19,6 +19,7 @@ return new class extends Migration
 
             $table->unsignedBigInteger('avatarable_id');
             $table->string('avatarable_type');
+            $table->softDeletes();
         });
     }
 

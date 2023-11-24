@@ -27,6 +27,7 @@ return new class extends Migration
             $table->unique(['project_id', 'worker_id']);
 
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

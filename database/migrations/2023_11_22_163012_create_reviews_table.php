@@ -18,6 +18,7 @@ return new class extends Migration
 
             $table->unsignedBigInteger('reviewable_id');
             $table->string('reviewable_type');
+            $table->softDeletes();
         });
     }
 
