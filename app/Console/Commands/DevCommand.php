@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Jobs\SomeJob;
 use App\Models\Department;
 use App\Models\Position;
 use App\Models\Profile;
@@ -29,11 +30,8 @@ class DevCommand extends Command
      */
     public function handle()
     {
-        $worker = Worker::first();
+        SomeJob::dispatch();
 
-        $worker->update([
-            'age' => '16.000'
-        ]);
         return 0;
     }
 }
