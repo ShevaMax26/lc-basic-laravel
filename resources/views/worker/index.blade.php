@@ -51,14 +51,18 @@
                 <td>{{ $worker->description }}</td>
                 <td>{{ $worker->is_married ? 'Yes' : 'No' }}</td>
                 <td><a href="{{ route('workers.show', $worker->id) }}">Detail</a></td>
-                <td><a href="{{ route('workers.edit', $worker->id) }}">Edit</a></td>
-                <td>
-                    <form action="{{ route('workers.destroy', $worker->id) }}" method="post">
-                        @csrf
-                        @method('DELETE')
-                        <input type="submit" value="Delete">
-                    </form>
-                </td>
+                @can('update', $worker)
+                    <td><a href="{{ route('workers.edit', $worker->id) }}">Edit</a></td>
+                @endcan
+                @can('update', $worker)
+                    <td>
+                        <form action="{{ route('workers.destroy', $worker->id) }}" method="post">
+                            @csrf
+                            @method('DELETE')
+                            <input type="submit" value="Delete">
+                        </form>
+                    </td>
+                @endcan
             </tr>
         @endforeach
         </tbody>
