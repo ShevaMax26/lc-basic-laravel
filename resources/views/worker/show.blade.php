@@ -22,7 +22,7 @@
             <td>{{ $worker->age }}</td>
             <td>{{ $worker->description }}</td>
             <td>{{ $worker->is_married ? 'Yes' : 'No' }}</td>
-            <td><a href="{{ route('worker.index') }}">Back</a></td>
+            <td><a href="{{ route('workers.index') }}">Back</a></td>
         </tr>
         </tbody>
     </table>

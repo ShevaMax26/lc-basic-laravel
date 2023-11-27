@@ -1,6 +1,6 @@
 @extends('layout.main')
 @section('content')
-    <form class="col-5" action="{{ route('worker.update', $worker->id) }}" method="post">
+    <form class="col-5" action="{{ route('workers.update', $worker->id) }}" method="post">
         @csrf
         @method('PATCH')
         <div class="mb-3">

@@ -1,6 +1,6 @@
 @extends('layout.main')
 @section('content')
-    <form class="col-5" action="{{ route('worker.store') }}" method="post">
+    <form class="col-5" action="{{ route('workers.store') }}" method="post">
         @csrf
         <div class="mb-3">
             <input type="text" class="form-control" name="name" placeholder="Name" value="{{ old('name') }}">

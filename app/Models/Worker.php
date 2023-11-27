@@ -29,16 +29,7 @@ class Worker extends Model
 
     protected static function booted()
     {
-        static::created(function($worker) {
-            event(new CreatedEvent($worker));
-        });
 
-        static::updated(function($worker) {
-
-            if ($worker->wasChanged() && $worker->getOriginal('age') != $worker->getAttributes()['age']) {
-                dd('event');
-            }
-        });
     }
 
     public function profile(): HasOne

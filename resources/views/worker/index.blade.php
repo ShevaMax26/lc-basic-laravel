@@ -1,6 +1,6 @@
 @extends('layout.main')
 @section('content')
-    <form action="{{ route('worker.index') }}" class="d-flex gap-2 w-100">
+    <form action="{{ route('workers.index') }}" class="d-flex gap-2 w-100">
         <div class="mb-3">
             <input type="text" class="form-control" name="name" placeholder="name" value="{{ request()->get('name') }}">
         </div>
@@ -24,7 +24,7 @@
             <input {{ request()->get('is_married') ? 'checked' : '' }} type="checkbox" class="form-check-input" id="is_married" name="is_married">
         </div>
         <button type="submit" class="btn btn-primary h-fit-content" style="height: fit-content">Find</button>
-        <a href="{{ route('worker.index') }}" type="submit" class="btn btn-warning" style="height: fit-content">Clear</a>
+        <a href="{{ route('workers.index') }}" type="submit" class="btn btn-warning" style="height: fit-content">Clear</a>
     </form>
 
     <table class="table">
@@ -50,10 +50,10 @@
                 <td>{{ $worker->age }}</td>
                 <td>{{ $worker->description }}</td>
                 <td>{{ $worker->is_married ? 'Yes' : 'No' }}</td>
-                <td><a href="{{ route('worker.show', $worker->id) }}">Detail</a></td>
-                <td><a href="{{ route('worker.edit', $worker->id) }}">Edit</a></td>
+                <td><a href="{{ route('workers.show', $worker->id) }}">Detail</a></td>
+                <td><a href="{{ route('workers.edit', $worker->id) }}">Edit</a></td>
                 <td>
-                    <form action="{{ route('worker.destroy', $worker->id) }}" method="post">
+                    <form action="{{ route('workers.destroy', $worker->id) }}" method="post">
                         @csrf
                         @method('DELETE')
                         <input type="submit" value="Delete">

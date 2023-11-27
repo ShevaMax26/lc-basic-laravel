@@ -20,6 +20,7 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->boolean('is_married')->default(false);
             $table->foreignIdFor(\App\Models\Position::class)
+                ->nullable()
                 ->index()
                 ->constrained()
                 ->cascadeOnDelete()
