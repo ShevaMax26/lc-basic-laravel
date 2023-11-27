@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\WorkerController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,19 +14,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('workers', [WorkerController::class, 'index'])->name('worker.index');
+Route::get('/', function () {
+    return view('welcome');
+});
 
-Route::get('workers/create', [WorkerController::class, 'create'])->name('worker.create');
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::post('workers', [WorkerController::class, 'store'])->name('worker.store');
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
 
-Route::get('workers/{worker}', [WorkerController::class, 'show'])->name('worker.show');
-
-Route::get('workers/{worker}/edit', [WorkerController::class, 'edit'])->name('worker.edit');
-
-Route::patch('workers/{worker}', [WorkerController::class, 'update'])->name('worker.update');
-
-Route::delete('workers/{worker}', [WorkerController::class, 'destroy'])->name('worker.destroy');
-
-
-
+require __DIR__.'/auth.php';
