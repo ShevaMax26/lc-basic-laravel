@@ -7,6 +7,7 @@ use App\Http\Requests\Worker\StoreRequest;
 use App\Http\Requests\Worker\UpdateRequest;
 use App\Http\Resources\WorkerResource;
 use App\Models\Worker;
+use App\Services\WorkerManager;
 use Illuminate\Http\Request;
 
 class WorkerController extends Controller
@@ -25,16 +26,13 @@ class WorkerController extends Controller
 
     public function store(StoreRequest $request)
     {
-        $data = $request->validated();
-        $worker = Worker::create($data);
-        return WorkerResource::make($worker)->resolve();
+        return WorkerResource::make(app(WorkerManager::class)->store($request->validated()))->resolve();
     }
 
     public function update(UpdateRequest $request, Worker $worker)
     {
-        $data = $request->validated();
-        $worker->update($data);
-        $worker->fresh();
+        $worker = app(WorkerManager::class)->update($request->validated(), $worker);
+
         return WorkerResource::make($worker)->resolve();
     }
 
