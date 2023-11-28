@@ -33,8 +33,8 @@
             @enderror
         </div>
         <div class="mb-3">
-               <label for="is_married" class="form-label">Is married</label>
-            <input {{ old('is_married') ? 'checked' : '' }} type="checkbox" id="is_married" name="is_married">
+            <label for="is_married" class="form-label">Is married</label>
+            <input type="checkbox" id="is_married" name="is_married" value="1" {{ old('is_married') ? 'checked' : '' }}>
             @error('is_married')
             <div class="text-danger">{{ $message }}</div>
             @enderror

@@ -27,7 +27,7 @@ class StoreRequest extends FormRequest
             'email' => 'required|email',
             'age' => 'nullable|integer',
             'description' => 'nullable|string',
-            'is_married' => 'nullable|string',
+            'is_married' => 'nullable|boolean',
         ];
     }
 
@@ -42,7 +42,7 @@ class StoreRequest extends FormRequest
             'email.email' => 'Це поле повинно бути у форматі електронної пошти',
             'age.integer' => 'Це поле повинно бути числом',
             'description.string' => 'Це поле повинно бути рядком',
-            'is_married.string' => 'Це поле повинно бути рядком',
+            'is_married.boolean' => 'Це поле повинно бути буловим',
         ];
     }
 
